@@ -1,0 +1,29 @@
+service: my-express-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-west-2
+  deploymentBucket: express-api-deployment-bucket
+  stage: production
+
+functions:
+  app:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+          cors: # CORS configuration for API Gateway
+            allowedOrigins:
+              - '*' # Allow all origins
+            allowedHeaders:
+              - Content-Type
+              - Authorization
+            allowedMethods:
+              - OPTIONS
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH

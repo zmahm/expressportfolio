@@ -1,14 +1,8 @@
 // test/api.test.js
 const request = require('supertest');
 const app = require('../index'); // Import the app
+const { expect } = require('chai'); // Import expect from chai
 
-let expect;
-
-// Dynamically import chai for compatibility with ESM
-before(async () => {
-  const chai = await import('chai');
-  expect = chai.expect;
-});
 
 describe('API Tests', () => {
   

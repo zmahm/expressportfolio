@@ -11,7 +11,9 @@
   "description": "A simple Express.js API with Mocha tests",
   "dependencies": {
     "cors": "2.8.5",
-    "express": "4.21.1"
+    "dotenv": "^16.4.5",
+    "express": "4.21.1",
+    "serverless-http": "3.2.0"
   },
   "devDependencies": {
     "chai": "1.2",
