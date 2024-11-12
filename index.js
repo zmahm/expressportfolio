@@ -1,22 +1,22 @@
 // index.js
 const express = require('express');
+const cors = require('cors'); // Import CORS middleware
 const app = express();
 const PORT = 3000;
 
-// Middleware
-const logger = require('./middleware/logger');
+// Use CORS middleware
+app.use(cors()); // Enable all CORS requests
 
-// Apply middleware
-app.use(express.json());  // Built-in middleware to parse JSON
-app.use(logger);          // Custom logger middleware
+// Middleware to parse JSON
+app.use(express.json());
 
-// Import and use routes
+// Import routes
 const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes); // Prefix all routes with /api
+app.use('/api', apiRoutes);
 
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-module.exports = app; // Export app for testing
+module.exports = app;
