@@ -1,0 +1,20 @@
+{
+  "name": "expressportfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "author": "Zeshan Mahmood",
+  "license": "ISC",
+  "description": "A simple Express.js API with Mocha tests",
+  "dependencies": {
+    "express": "4.21.1"
+  },
+  "devDependencies": {
+    "chai": ".1.2",
+    "mocha": "10.8.2",
+    "supertest": "7.0.0"
+  }
+}
