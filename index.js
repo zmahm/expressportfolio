@@ -1,17 +1,18 @@
+// index.js
 const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// Root endpoint
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the API' });
-});
+// Middleware
+const logger = require('./middleware/logger');
 
-// Greet endpoint
-app.get('/greet/:name', (req, res) => {
-  const name = req.params.name;
-  res.json({ message: `Hello, ${name}!` });
-});
+// Apply middleware
+app.use(express.json());  // Built-in middleware to parse JSON
+app.use(logger);          // Custom logger middleware
+
+// Import and use routes
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes); // Prefix all routes with /api
 
 // Start server
 app.listen(PORT, () => {
