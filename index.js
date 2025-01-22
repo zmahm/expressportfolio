@@ -16,16 +16,16 @@ app.use(express.json()); // Enable JSON body parsing
 
 // Import routes
 const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes); // Use the routes with /api prefix
+app.use('/', apiRoutes); // Use the routes with /api prefix
 
 // Conditional: If not in production, start a local server
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 3000;
+//if (process.env.NODE_ENV !== 'production') {
+  const PORT = 3000;
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://127.0.0.1:${PORT}`);
   });
-}
+//}
 
 // Export the app and Lambda handler
 module.exports = app; // Export app for local testing with Mocha
-module.exports.handler = serverless(app); // Export Lambda handler for AWS
+//module.exports.handler = serverless(app); // Export Lambda handler for AWS
